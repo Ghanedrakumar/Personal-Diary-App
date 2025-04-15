@@ -60,7 +60,8 @@ const Login = () => {
                     Login
                 </button>
                 <div>
-                    <p style={{ marginTop: '15px' }}>Don't have an account? <Link to="/signup" style={{ color: '#007BFF' }}>Signup</Link></p>
+                <Link to="/signup" style={{ color: '#007BFF' }}>Create a New Account</Link>
+                    {/* <p style={{ marginTop: '15px' }}>Don't have an account? <Link to="/signup" style={{ color: '#007BFF' }}>Signup</Link></p> */}
                 </div>
             </form>
         </div>

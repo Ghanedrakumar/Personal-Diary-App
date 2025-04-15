@@ -102,7 +102,7 @@ const onSubmit = async (data)=>{
 
                 <button type="submit">Signup</button>
                  <div>
-                    <p>Already have an account? <Link to="/login">Login</Link></p>
+                    <Link className='bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded ' to="/login">Already have account?</Link>
                  </div>
             </form>
         </div>
