@@ -9,7 +9,7 @@ const SearchBar = ({value,onChange,handleSearch,onClearSearch}) => {
             < input
                 type="text"
                 placeholder="Search Notes..."
-                className=" text-slate-500 rounded-lg py-[11px]   bg-transparent px-1 text-1xl outline-none focus:border-blue-500"
+                className=" text-slate-500 rounded-lg py-[7px]   bg-transparent px-1 text-1xl outline-none focus:border-blue-500"
             value={value}
             onChange={onChange}
             />
