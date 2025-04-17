@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <div>
             <nav>
-                <ul className="flex justify-between drop-shadow items-center bg-gray-800 text-white p-1">
+                <ul className="flex justify-between drop-shadow items-center bg-gray-400 drop-shadow-blue-300 text-white p-1">
                 <span>     <Link className="text-xl font-bold flex justify-center items-center" to="/dashboard"  > GoodNotes </Link></span>
                     <SearchBar 
                     value={searchQuery} 
