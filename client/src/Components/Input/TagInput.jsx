@@ -16,7 +16,7 @@ if(inputValue.trim() !== "") {
       <div className='flex gap-2 flex-wrap  mt-4 mb-2 items-center '>
         {tags.map((tag, index) => (
           <span key={index} className='bg-slate-200 text-black-900 text-xs font-medium mr-2 px-2.5 py-1 rounded'>
-            #   {tag}
+            # {tag}
             <button className='ml-5  mt-1 ' onClick={() => setTags(tags.filter((_, i) => i !== index))}><MdClose/></button>
           </span>
         ))}

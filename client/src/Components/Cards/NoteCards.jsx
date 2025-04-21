@@ -11,7 +11,7 @@ const NoteCards = ({title,date,tags,content, onPinNote ,onEdit,onDelte,isPinned}
                     <span className='text-green-700 text-xs'>{date}</span>
                 </div>
                 <MdOutlinePushPin 
-                className={`icon-btn ${isPinned ? 'text-green-600' : 'text-gray-400'}`}
+                className={` icon-btn hover:text-blue-600 ${isPinned ? 'text-[#2B85FF]' : 'text-gray-400'}`}
                     onClick={onPinNote}
                 />
             </div>
