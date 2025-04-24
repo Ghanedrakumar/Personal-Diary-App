@@ -22,10 +22,10 @@ const AddModalSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    UserId: {
-        type: String,
-        default:[],
-    },
+    // UserId: {
+    //     type: String,
+    //     required:true,
+    // },
     createdAt: {
         type: Date,
         default: Date.now,
