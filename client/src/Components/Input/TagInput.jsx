@@ -24,7 +24,7 @@ if(inputValue.trim() !== "") {
     )}
 
     <div className='flex gap-2 flex-wrap mt-2 mb-4 items-center'>
-        <input type="text" className='border-2 border-gray-300 text-sm w-auto  p-2 rounded' placeholder='Add tags...'
+        <input type="text" name='tag' className='border-2 border-gray-300 text-sm w-auto  p-2 rounded' placeholder='Add tags...'
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => {

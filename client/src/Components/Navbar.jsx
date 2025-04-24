@@ -21,7 +21,7 @@ const Navbar = () => {
         <div>
             <nav>
                 <ul className="flex justify-between drop-shadow items-center bg-gray-400 drop-shadow-blue-300 text-white p-1">
-                <span>     <Link className="text-xl font-bold flex justify-center items-center" to="/dashboard"  > GoodNotes </Link></span>
+                <span>     <Link className="text-xl font-bold flex justify-center items-center hover:text-blue-500" to="/dashboard"  > GoodNotes </Link></span>
                     <SearchBar 
                     value={searchQuery} 
                     onChange={({target}) => setSearchQuery(target.value)}

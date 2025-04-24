@@ -5,6 +5,7 @@ import loginRoutes from './Routes/login.js'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import router from './Routes/signup.js'
+import ModalRoutes from './Routes/Modal.js'
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(cors())
@@ -21,8 +22,10 @@ mongoose.connect('mongodb://localhost:27017/diary', {
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
 app.use("/signup", signupRoutes)
 app.use("/login", loginRoutes) 
+app.use("/modal", ModalRoutes)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

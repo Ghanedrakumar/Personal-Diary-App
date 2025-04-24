@@ -37,14 +37,14 @@ const Login = () => {
             <h2>Login</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div style={{ marginBottom: '15px' }}>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="email">Email</label>
                     <input
-                        id="username"
+                        id="email"
                         type="text"
-                        {...register('username', { required: 'Username is required' })}
+                        {...register('email', { required: 'Email is required' })}
                         style={{ display: 'block', width: '100%', padding: '8px', marginTop: '5px' }}
                     />
-                    {errors.username && <p style={{ color: 'red', fontSize: '12px' }}>{errors.username.message}</p>}
+                    {errors.email && <p style={{ color: 'red', fontSize: '12px' }}>{errors.email.message}</p>}
                 </div>
                 <div style={{ marginBottom: '15px' }}>
                     <label htmlFor="password">Password</label>

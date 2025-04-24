@@ -9,10 +9,10 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(cors())
 router.post("/login", async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     console.log(req.body);
     try {
-        const user = await Biometric.findOne({ username:username});
+        const user = await Biometric.findOne({ email: email });
         if (!user) {
             return res.status(400).json({ message: "Invalid email or password" });
         }
