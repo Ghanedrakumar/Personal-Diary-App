@@ -142,10 +142,11 @@ const AddEditNotes = ({ onClose, noteData, type }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     title,
                     content,
-                    tags
+                    tags,
                 })
             });
 

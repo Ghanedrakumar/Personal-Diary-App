@@ -12,7 +12,7 @@ const AddModalSchema = new mongoose.Schema({
     },
     tags: {
         type: [String],
-        default: [String],
+        default: [],
     },
     date: {
         type: Date,
@@ -22,26 +22,26 @@ const AddModalSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    // UserId: {
-    //     type: String,
-    //     required:true,
-    // },
+    userId: {
+        type: String,
+        required:true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
     },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false,
-    },
-    deletedAt: {
-        type: Date,
-        default: null,
-    },
+    // updatedAt: {
+    //     type: Date,
+    //     default: Date.now,
+    // },
+    // isDeleted: {
+    //     type: Boolean,
+    //     default: false,
+    // },
+    // deletedAt: {
+    //     type: Date,
+    //     default: null,
+    // },
 
 
 })

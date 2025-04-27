@@ -9,6 +9,13 @@ const router = Router()
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(cors())
+// in app.js or index.js
+router.use(cors({
+    origin: "http://localhost:5174", // adjust to your frontend URL
+    credentials: true, // 🔑 This allows cookies
+  }));
+  
+
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
@@ -28,11 +35,11 @@ router.post("/login", async (req, res) => {
         }
 
         // ✅ Create token
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
         console.log("Generated token:", token);
 
 
-        const { password: pass, ...rest } = user._doc
+        const { password: pass, ...rest} = user._doc
 
         // res.status(200).json({ message: "Login successful", user });
         // res.cookie("access_token",token,{httpOnly:true}).status(200).json({message:"Login Successful",user});
@@ -42,8 +49,9 @@ router.post("/login", async (req, res) => {
             secure: false,          // true if using HTTPS
             sameSite: "Lax"         // "None" for cross-domain + secure true
         })
+
             .status(200)
-            .json({ message: "Login Successful", rest });
+            .json({ success:"true", message: "Login Successful", rest });
 
 
     } catch (error) {

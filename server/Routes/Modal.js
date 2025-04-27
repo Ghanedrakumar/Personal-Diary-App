@@ -10,16 +10,18 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 // router.use(cors())
 router.use(cors({
-    origin: "http://localhost:5173", // adjust to your frontend URL
+    origin: "http://localhost:5174", // adjust to your frontend URL
     credentials: true, // 🔑 This allows cookies
   }));
   
 
 router.use(cookieParser()); 
-router.post("/modal", async (req, res,next) => {
+router.post("/modal",verifyToken, async (req, res,next) => {
     const { title, content,tags} = req.body;
     
-    // const {id} =req.user;
+    const {id} =req.user;
+    // const userId = req.user.id;
+
     if(!title){
         return next(errorHandler(400 , "Title is required"))
     }
@@ -34,12 +36,12 @@ router.post("/modal", async (req, res,next) => {
             tags: tags||[], // Initialize with an empty array or set it to null if you want
             date: new Date(),
             isPinned: false,
-            // UserId:id,
+            userId:id,
         });
         console.log(newNote)
 
         await newNote.save();
-        res.status(201).json({ message: "Note created successfully", note: newNote });
+        res.status(201).json({success:"true", message: "Note created successfully", note: newNote });
     }
     catch (error) {
         console.error("Error creating note:", error);
