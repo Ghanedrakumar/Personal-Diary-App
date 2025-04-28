@@ -14,7 +14,6 @@ router.use(cors({
     credentials: true, // 🔑 This allows cookies
 }));
 
-
 router.use(cookieParser());
 // This is for storing the title content and tags in mongodb
 
@@ -94,6 +93,23 @@ router.post("/edit/:noteId", verifyToken, async (req, res, next) => {
 
     } catch (error) {
         next(error)
+    }
+
+})
+
+router.get("/all",verifyToken, async(req,res,next)=>{
+    const userId =req.user.id 
+    console.log(userId)
+    try {
+        const notes =await AddModal.find({userId:userId}).sort({isPinned:-1})
+        console.log(notes)
+        res.status(200).json({
+            success:"true",
+            message:"All notes retrived successfully",
+            notes,
+        })
+    } catch (error) {
+        next(Error);
     }
 
 })

@@ -32,6 +32,7 @@ export const verifyToken = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return next(errorHandler(403, "Forbidden"));
         req.user = user; // ✅ attaches user object (with id) to req
+        console.log(req.user)
         next();
     });
 };
