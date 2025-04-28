@@ -16,25 +16,26 @@ router.use(bodyParser.urlencoded({ extended: true }))
 const app = express()
 const port = 3000
 mongoose.connect('mongodb://localhost:27017/diary', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    }).then(() => {
-    console.log('Connected to MongoDB')
-    }).catch(err => {
-    console.error('Error connecting to MongoDB', err)
-    })
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connected to MongoDB')
+}).catch(err => {
+  console.error('Error connecting to MongoDB', err)
+})
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5174", // or your frontend URL
+  origin: "http://localhost:5173", // or your frontend URL
   credentials: true,
 }));
 
 app.use(cookieParser())
 app.use("/signup", signupRoutes)
 app.use("/login", loginRoutes) 
-app.use("/modal", ModalRoutes)
+app.use("/note", ModalRoutes)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
 router.use(cors())
 // in app.js or index.js
 router.use(cors({
-    origin: "http://localhost:5174", // adjust to your frontend URL
+    origin: "http://localhost:5173", // adjust to your frontend URL
     credentials: true, // 🔑 This allows cookies
   }));
   

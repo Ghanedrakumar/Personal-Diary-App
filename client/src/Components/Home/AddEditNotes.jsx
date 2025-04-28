@@ -137,7 +137,7 @@ const AddEditNotes = ({ onClose, noteData, type }) => {
         setError("");
 
         try {
-            const response = await fetch("http://localhost:3000/modal/modal", {
+            const response = await fetch("http://localhost:3000/note/modal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
