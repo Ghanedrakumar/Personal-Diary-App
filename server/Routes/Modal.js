@@ -57,13 +57,13 @@ router.post("/modal", verifyToken, async (req, res, next) => {
 router.post("/edit/:noteId", verifyToken, async (req, res, next) => {
 
     const note = await AddModal.findById(req.params.noteId)
-    console.log("NoteId is :",req.params.noteId); 
+    console.log("NoteId is :", req.params.noteId);
     if (!note) {
         return next(errorHandler(404, "Notes not found"))
     }
     console.log(req.params.noteId)
     console.log(note.id)
-    if (req.params.noteId!== note.id) {
+    if (req.params.noteId !== note.id) {
         return next(errorHandler(401, "You can only update Your own note!"))
     }
 
@@ -97,15 +97,17 @@ router.post("/edit/:noteId", verifyToken, async (req, res, next) => {
 
 })
 
-router.get("/all",verifyToken, async(req,res,next)=>{
-    const userId =req.user.id 
+// This is used to fetch all data of the user
+
+router.get("/all", verifyToken, async (req, res, next) => {
+    const userId = req.user.id
     console.log(userId)
     try {
-        const notes =await AddModal.find({userId:userId}).sort({isPinned:-1})
+        const notes = await AddModal.find({ userId: userId }).sort({ isPinned: -1 })
         console.log(notes)
         res.status(200).json({
-            success:"true",
-            message:"All notes retrived successfully",
+            success: "true",
+            message: "All notes retrived successfully",
             notes,
         })
     } catch (error) {
@@ -114,5 +116,52 @@ router.get("/all",verifyToken, async(req,res,next)=>{
 
 })
 
+// This is used to delte the note from the server
+
+router.delete("/delete/:noteId", verifyToken, async (req, res, next) => {
+const noteId = req.params.noteId
+
+const note= await AddModal.findOne({_id:noteId , userId:req.user.id}) 
+if(!note){
+    return next(errorHandler(404 ,"Note not found"))
+}
+
+try {
+    await AddModal.deleteOne({_id:noteId,userId:req.user.id})
+    res.status(200).json({
+        success:"true",
+        message:"Note deleted successfully"
+    })
+} catch (error) {
+    next(error)
+}
+
+})
+
+// this is used to handle isPinned
+
+router.put("/update-note-pinned/:noteId",verifyToken, async(req,res,next)=>{
+    try {
+        const note =await AddModal.findById(req.params.noteId)
+if(!note){
+    return next(errorHandler(404,"Note not found"))
+}
+if(req.user.id !==note.userId){
+return next(errorHandler(401,"You can only update your own note!"))      
+}
+const {isPinned} =req.body
+note.isPinned = isPinned;
+await note.save()
+res.status(200).json({
+    success:"true",
+    message:"Note Update successfully",
+    note,
+})
+
+
+    } catch (error) {
+        next(error)
+    }
+})
 
 export default router;

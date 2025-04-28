@@ -4,6 +4,7 @@ import Biometric from "../models/registration.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import { verifyToken } from "../utils/verifyUser.js";
 dotenv.config();
 const router = Router()
 router.use(bodyParser.json())
@@ -13,8 +14,8 @@ router.use(cors())
 router.use(cors({
     origin: "http://localhost:5173", // adjust to your frontend URL
     credentials: true, // 🔑 This allows cookies
-  }));
-  
+}));
+// this is for login route  
 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -39,7 +40,7 @@ router.post("/login", async (req, res) => {
         console.log("Generated token:", token);
 
 
-        const { password: pass, ...rest} = user._doc
+        const { password: pass, ...rest } = user._doc
 
         // res.status(200).json({ message: "Login successful", user });
         // res.cookie("access_token",token,{httpOnly:true}).status(200).json({message:"Login Successful",user});
@@ -51,7 +52,7 @@ router.post("/login", async (req, res) => {
         })
 
             .status(200)
-            .json({ success:"true", message: "Login Successful", rest });
+            .json({ success: "true", message: "Login Successful", rest });
 
 
     } catch (error) {
@@ -59,4 +60,21 @@ router.post("/login", async (req, res) => {
     }
 }
 );
+
+// this is for the signout route
+
+router.get("/signout",verifyToken, (req, res, next) => {
+    try {
+        res.clearCookie("access_token")
+        res.status(200).json({
+            success: "true",
+            message: "User Logged out successfully"
+        })
+
+    } catch (error) {
+        next(error)
+    }
+
+})
+
 export default router;
