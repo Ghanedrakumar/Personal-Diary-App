@@ -222,8 +222,8 @@ const Dashboard = () => {
           <EmptyCard
             imgSrc={
               isSearch
-                ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtakcQoMFXwFwnlochk9fQSBkNYkO5rSyY9A&s"
-                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDCtZLuixBFGTqGKdWGLaSKiO3qyhW782aZA&s"
+                ? "https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg"
+                : "https://cdn.vectorstock.com/i/1000v/09/39/sticky-notes-vector-3670939.jpg"
             }
             message={
               isSearch

@@ -9,7 +9,7 @@ dotenv.config();
 const router = Router()
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
-router.use(cors())
+// router.use(cors())
 // in app.js or index.js
 router.use(cors({
     origin: "http://localhost:5173", // adjust to your frontend URL
