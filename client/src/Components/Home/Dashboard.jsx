@@ -64,7 +64,7 @@ import { toast } from "react-toastify"
 import EmptyCard from "../../components/EmptyCard/EmptyCard"
 
 const Dashboard = () => {
-  const { currentUser} = useSelector(
+  const { currentUser } = useSelector(
     (state) => state.user
   )
 
@@ -145,7 +145,7 @@ const Dashboard = () => {
         params: { query },
         withCredentials: true,
       })
-
+      console.log(res.data)
       if (res.data.success === false) {
         console.log(res.data.message)
         toast.error(res.data.message)
@@ -245,7 +245,7 @@ const Dashboard = () => {
 
       <Modal
         isOpen={openAddEditModal.isShown}
-        onRequestClose={() => {}}
+        onRequestClose={() => { }}
         style={{
           overlay: {
             backgroundColor: "rgba(0,0,0,0.2)",

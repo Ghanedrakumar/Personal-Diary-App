@@ -167,30 +167,30 @@ res.status(200).json({
 // this is for searchbar
 
 router.get("/search",verifyToken ,async(req,res,next)=>{
+    const { query } = req.query
+    console.log(query)
 
-      const { query } = req.query
-    
-      if (!query) {
-        return next(errorHandler(400, "Search query is required"))
-      }
-    
-      try {
-        const matchingNotes = await Note.find({
-          userId: req.user.id,
-          $or: [
-            { title: { $regex: new RegExp(query, "i") } },
-            { content: { $regex: new RegExp(query, "i") } },
-          ],
-        })
-    
-        res.status(200).json({
-          success: true,
-          message: "Notes matching the search query retrieved successfully",
-          notes: matchingNotes,
-        })
-      } catch (error) {
-        next(error)
-      }
+    if (!query) {
+      return next(errorHandler(400, "Search query is required"))
+    }
+  
+    try {
+      const matchingNotes = await AddModal.find({
+        userId: req.user.id,
+        $or: [
+          { title: { $regex: new RegExp(query, "i") } },
+          { content: { $regex: new RegExp(query, "i") } },
+        ],
+      })
+  
+      res.status(200).json({
+        success: true,
+        message: "Notes matching the search query retrieved successfully",
+        notes: matchingNotes,
+      })
+    } catch (error) {
+      next(error)
+    }
     
 
 
