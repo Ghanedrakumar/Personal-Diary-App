@@ -235,7 +235,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
         />
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 mb-4">
         <label className="input-label text-red-400 uppercase">tags</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
