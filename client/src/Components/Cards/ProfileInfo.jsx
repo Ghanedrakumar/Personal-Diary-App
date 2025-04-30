@@ -1,22 +1,28 @@
-import React from 'react'
-import { getInitails } from '../../utils/helper'
-const ProfileInfo = ({onLogout}) => {
-    return (
-        <div className='flex items-center justify-center  gap-3'>
-            <div className="w-10 h-10 flex items-center justify-center rounded-full text-slate-950 font-medium bg-slate-100">
-             {getInitails("Ghanedra Kumar")}
-                </div>
-                <div className='text-sm font-medium' >
-                    Ghendra kumar 
-                </div>
+import React from "react"
+// import { getInitials } from "../Components/utils/helper.js"
 
-                <button className="flex space-x-10 bg-red-500 hover: hover:bg-red-800 hover:text-blue-300 hover:opacity-80 font-bold p-2 rounded-sm"
-                onClick={onLogout}>
-                     Logout
-                </button>
-            
-        </div>
-    )
+import  { getInitials }  from "../../utils/helper.js"
+const ProfileInfo = ({ onLogout, userInfo }) => {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="w-12 h-12 flex items-center justify-center rounded-full text-slate-950 font-medium bg-slate-100">
+        {getInitials(userInfo?.username)}
+      </div>
+
+      <div>
+        <p className="text-sm font-medium">{userInfo?.username}</p>
+      </div>
+
+      <button
+        className="text-sm bg-red-500 p-1 rounded-md text-white hover:opacity-80"
+        onClick={onLogout}
+      >
+        Logout
+      </button>
+      {getInitials()}
+
+    </div>
+  )
 }
 
 export default ProfileInfo
